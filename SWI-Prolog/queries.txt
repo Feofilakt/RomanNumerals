@@ -1,0 +1,3 @@
+string_chars("MCMLXXIV",R), phrase(roman(A),R), write(A).
+phrase(roman(1974),R), string_chars(SR,R), write(SR).
+findall(SR=A, (phrase(roman(A),R), string_chars(SR,R)), L), sort(2,=<,L,SortedL), maplist(writeln,SortedL).

@@ -1,0 +1,158 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Generics.Collections;
+
+type
+  TForm1 = class(TForm)
+    group1: TEdit;
+    i: TButton;
+    v: TButton;
+    group10: TEdit;
+    x: TButton;
+    l: TButton;
+    group1000: TEdit;
+    m1: TButton;
+    ix: TButton;
+    xc: TButton;
+    result: TEdit;
+    Label1: TLabel;
+    group100: TEdit;
+    cm: TButton;
+    c: TButton;
+    d: TButton;
+    procedure dClick(Sender: TObject);
+    procedure cClick(Sender: TObject);
+    procedure cmClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure HalfTensClick(Sender: TObject);
+    procedure TensClick(Sender: TObject);
+    procedure PreviousTens(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  TRomeGroup = record
+    HalfTens: TButton;
+    Tens: TButton;
+    PreviousTens: TButton;
+    Rank: integer;
+  end;
+
+var
+  Form1: TForm1;
+  //groups: TDictionary<TButton, TRomeGroup>;
+  groups: array[1..3] of TRomeGroup;
+  //buttons: array[1..3,1..3] of integer=((1,2,3),(1,2,3),(1,2,3));
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.HalfTensClick(Sender: TObject);
+var
+  count: Integer;
+begin
+  for count := 0 to 2 do begin
+    if Sender = groups[count].HalfTens then begin
+    end;
+    break;
+  end;
+end;
+
+procedure TForm1.TensClick(Sender: TObject);
+var
+  count: Integer;
+begin
+  for count := 0 to 2 do begin
+    if Sender = groups[count].Tens then begin
+    end;
+    break;
+  end;
+end;
+
+procedure TForm1.PreviousTens(Sender: TObject);
+var
+  count: Integer;
+begin
+  for count := 0 to 2 do begin
+    if Sender = groups[count].PreviousTens then begin
+    end;
+    break;
+  end;
+end;
+
+
+
+procedure TForm1.cClick(Sender: TObject);
+begin
+  //TButton(Sender).Parent.
+  c.Tag:=c.Tag+1;
+  group100.Text:=group100.Text+TButton(Sender).Caption;
+  result.Text:=IntToStr((StrToInt(result.Text)+100));
+  if c.Tag=3 then c.Visible:=false
+  else if c.Tag=2 then begin
+    d.Visible:=false;
+    cm.Visible:=false;
+  end
+  else if c.Tag=1 then cm.Enabled:=true;
+end;
+
+procedure TForm1.cmClick(Sender: TObject);
+begin
+  group100.Text:=group100.Text+cm.Caption;
+  result.Text:=IntToStr((StrToInt(result.Text)+8*100));
+  cm.Visible:=false;
+  c.Visible:=false;
+  d.Visible:=false;
+end;
+
+procedure TForm1.dClick(Sender: TObject);
+begin
+  group100.Text:=group100.Text+TButton(Sender).Caption;
+  if c.Tag=0 then result.Text:=IntToStr((StrToInt(result.Text)+5*100))
+  else begin
+    result.Text:=IntToStr((StrToInt(result.Text)+3*100));
+    c.Visible:=false;
+  end;
+  d.Visible:=false;
+  cm.Visible:=false;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  //groups:=TDictionary<TButton, TRomeGroup>.Create();
+
+  with groups[0] do
+  begin
+    HalfTens:=d;
+    Tens:=c;
+    PreviousTens:=cm;
+    Rank:=100;
+  end;
+
+  with groups[1] do
+  begin
+    HalfTens:=l;
+    Tens:=x;
+    PreviousTens:=xc;
+    Rank:=10;
+  end;
+
+  with groups[2] do
+  begin
+    HalfTens:=v;
+    Tens:=i;
+    PreviousTens:=ix;
+    Rank:=1;
+  end;
+//buttons:=((1,2,3),(1,2,3),(1,2,3));
+//buttons:=((d,c,cm),(l,x,xc),(v,i,ix));
+end;
+
+end.

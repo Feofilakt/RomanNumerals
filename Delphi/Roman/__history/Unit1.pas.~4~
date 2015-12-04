@@ -1,0 +1,63 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    group1: TEdit;
+    i2: TButton;
+    i1: TButton;
+    i3: TButton;
+    v: TButton;
+    group10: TEdit;
+    x2: TButton;
+    x1: TButton;
+    x3: TButton;
+    l: TButton;
+    group100: TEdit;
+    c2: TButton;
+    c1: TButton;
+    c3: TButton;
+    d: TButton;
+    group1000: TEdit;
+    m2: TButton;
+    m1: TButton;
+    m3: TButton;
+    ix: TButton;
+    cm: TButton;
+    xc: TButton;
+    reset: TButton;
+    procedure dClick(Sender: TObject);
+    procedure c1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.c1Click(Sender: TObject);
+begin
+TButton(Sender).Visible:=false;
+d.Visible:=false;
+cm.Enabled:=true;
+end;
+
+procedure TForm1.dClick(Sender: TObject);
+begin
+group100.Text:=group100.Text+TButton(Sender).Caption;
+TButton(Sender).Visible:=false;
+cm.Visible:=false;
+end;
+
+end.
