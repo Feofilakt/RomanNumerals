@@ -1,5 +1,5 @@
 # RomanNumerals
-Converting roman numerals into arabic by different approaches and programming paradigms
+Converting roman numerals into arabic by different approaches and programming paradigms. This is my for-fun students project made at the very beginning of professional career.
 
 I'm trying to write programs on different languages for solving one task.
 Every program must show the principles of one of the main programming paradigms.
